@@ -1,13 +1,22 @@
 #! /usr/bin/env node
 
-const colors = require('colors');
-const greet = require("../lib/greet");
+const program = require('commander');
 
-// print random greeting
-console.log(
-    // wraps text with rainbow color formatting
-    colors.rainbow(
-        // returns the random greeting text
-        greet.greetRandom()
-    )
-);
+// import function to list coffee menu
+const list = require('../lib/init');
+
+/*******************************************/
+
+program
+    .command('init') // sub-command name
+    .alias('ls') // alternative sub-command is `al`
+    .description('List coffee menu') // command description
+
+    // function to execute when command is uses
+    .action(function () {
+        list();
+    });
+
+
+// allow commander to parse `process.argv`
+program.parse(process.argv);
