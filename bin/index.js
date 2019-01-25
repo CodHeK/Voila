@@ -1,22 +1,32 @@
 #! /usr/bin/env node
 
-const program = require('commander');
+const inquirer = require('inquirer');
+const values = require('../lib/values');
 
-// import function to list coffee menu
-const list = require('../lib/init');
+const questions = [
+    { type: 'input', name: 'title', message: 'Choose project title' },
+    { type: 'input', name: 'git', message: 'enter git repo' },
+    { type: 'input', name: 'description', message: 'enter project discription' },
+    { type: 'list', name: 'css', message: 'choose css', choices: values.css },
+    { type: 'list', name: 'js', message: 'choose js', choices: values.js },
+    { type: 'input', name: 'entry', message: 'entry point', default: 'index.html' },
+    { type: 'input', name: 'author', message: 'author', default: '' },
+    { type: 'input', name: 'License', message: 'License', default: 'ISC' },
+];
 
-/*******************************************/
+const questions2 = [
+    { type: 'confirm', name: 'final', message: 'Is this Okay?', default: true },
+];
 
-program
-    .command('init') // sub-command name
-    .alias('ls') // alternative sub-command is `al`
-    .description('List coffee menu') // command description
+inquirer
+    .prompt(questions)
+    .then(function (answers) {
+        console.log(answers);
+        inquirer
+	    .prompt(questions2)
+	    .then(function (answers) {
+	        console.log(answers);
+})
+})
 
-    // function to execute when command is uses
-    .action(function () {
-        list();
-    });
 
-
-// allow commander to parse `process.argv`
-program.parse(process.argv);

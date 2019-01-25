@@ -1,6 +1,6 @@
 {
-  "name": "voila-cmd",
-  "version": "1.0.7",
+  "name": "voila-cmd1",
+  "version": "1.0.8",
   "description": "voice base dev",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
