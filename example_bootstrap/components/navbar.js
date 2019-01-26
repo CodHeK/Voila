@@ -14,7 +14,7 @@ module.exports.navbar = () => {
           type: 'button',
           span: [
             {
-              class: 'navbar-toggler-icon'
+              class: 'navbar-toggler-icon',
             }
           ]
         }

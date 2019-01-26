@@ -1,0 +1,10 @@
+{
+    "title": "example_materialize",
+    "description": "example_materialize",
+    "css": "Materialize",
+    "entry": "index.html",
+    "author": "",
+    "License": "ISC",
+    "git": false,
+    "config": "config.js"
+}

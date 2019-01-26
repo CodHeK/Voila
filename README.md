@@ -101,6 +101,86 @@ This `HTML` is can be viewed by starting the `server`, just run ...
 $ voila start
 ```
 
+## Writing HTML  in Component Style :
+
+- config.js
+```
+const { main } = require('./components/main');
+const { navbar } = require('./components/navbar');
+
+let Main = main();
+let Navbar = navbar();
+
+exports.root = [
+  {
+    div: [
+      {
+        id: 'root',
+        //ADD YOUR ELEMENTS HERE
+        Navbar,
+        Main
+      }
+    ]
+  }
+]
+```
+
+- main.js
+```
+module.exports.main = () => {
+  return [
+    {
+      class: 'container',
+      div: [
+        {
+          class: 'starter-template',
+          h1: [
+            {
+              value: 'Bootstrap starter template'
+            }
+          ],
+          p: [
+            {
+              class: 'lead',
+              value: 'Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.'
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+- navbar.js
+```
+module.exports.navbar = () => {
+  return [
+    {
+      class: 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
+      a: [
+        {
+          class: 'navbar-brand',
+          value: 'Logo'
+        }
+      ],
+      button: [
+        {
+          class: 'navbar-toggler',
+          type: 'button',
+          span: [
+            {
+              class: 'navbar-toggler-icon',
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+
 ## Examples :
 #
 ```
@@ -114,3 +194,4 @@ $ cd example
 ```
 $ voila start
 ```
+View your static webpage server on `http://localhost:(port)`
