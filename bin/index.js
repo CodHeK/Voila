@@ -1,5 +1,7 @@
 #! /usr/bin/env node
 
+const program = require('commander');
+const { server } = require('../lib/server');
 const inquirer = require('inquirer');
 const values = require('../lib/values');
 const fs = require('fs');
@@ -93,7 +95,7 @@ inquirer
 		                fs.open(`${dir}/voila.conf`,'w', function(err, file) {
 		                    if (err) {
 		                        console.log('Error creating entry point');
-		                    } else { 	
+		                    } else {
 		                        console.log('File created successfully');
 		                    }
 		                });
@@ -178,7 +180,7 @@ inquirer
 	                fs.open(`${dir}/voila.conf`,'w', function(err, file) {
 	                    if (err) {
 	                        console.log('Error creating entry point');
-	                    } else { 	
+	                    } else {
 	                        console.log('File created successfully');
 	                    }
 	                });
@@ -188,7 +190,7 @@ inquirer
 					    }
 					);
 
-					
+
 
 	            }
 	        })
@@ -200,3 +202,13 @@ inquirer
     })
 
 
+
+program
+    .command('start')
+    .description('Starting Server!')
+    .action(function () {
+        server();
+    });
+
+
+program.parse(process.argv);
