@@ -54,11 +54,25 @@ inquirer
                     if (err.code !== 'EEXIST') throw err
                 }
                 /* Make entry point file */
-                fs.open(`${dir}/answers.entry`,'w', function(err, file) {
+                fs.open(`${dir}/${answers.entry}`,'w', function(err, file) {
                     if (err) {
                         console.log('Error creating entry point');
                     } else {
                         console.log('File created successfully');
+                    }
+                });
+                /* Make .gitignore */
+                fs.open(`${dir}/.gitignore`,'w', function(err, file) {
+                    if (err) {
+                        console.log('Error creating .gitignore');
+                    } else {
+                        var data = answers.gitignore;
+                        for (var i=0; i<data.length; i++) {
+                            fs.appendFile(`${dir}/.gitignore`, `${data[i]}\n`, function (err) {
+                                if (err) throw err;
+                            });
+                        }
+                        console.log('Successfullt created .gitignore');
                     }
                 });
             }
