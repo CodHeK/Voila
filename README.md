@@ -36,6 +36,10 @@ This generates a `voila.json` file in your project directory and also a `config.
 You can also add `git repository` to your project, voila automatically initializes a empty git repository with the needed files in `.gitignore`.
 
 ```
+$ cd directory
+```
+
+```
 exports.root = {
   div: {
     id: 'root',
@@ -59,10 +63,16 @@ exports.root = {
 
 Above, is an example of a simple configuration, ( configurations need to be written in the `JSON` format ).
 
+Once, you've written your own `configuration`, voila needs to parse and compile it into `HTML`, to do that run...
+
+```
+$ voila load
+```
+
 We have built our own `parser` that parses the `JSON` configurations and converts them into it's equivalent `HTML` syntax.
 
 This `HTML` is can be viewed by starting the `server`, just run ...
 
 ```
-voila start
+$ voila start
 ```
