@@ -40,30 +40,52 @@ $ cd directory
 ```
 
 ```
-exports.root = {
-  div: {
-    id: 'root',
-    nav: {
-      class: 'navbar'
-    },
-    div: {
-      h1: {
-        class: 'title',
-        value: 'This is a H1 tag',
-        style: {
-            padding: '1em',
-            margin: '0.5em'
-            fontSize: '10px'
-        }
+exports.root = [
+  {
+    div: [
+      {
+        id: 'root'
+        //ADD YOUR ELEMENTS HERE
+        div: [
+          {
+            class: 'col-md-3'
+          }
+        ],
+        h1: [
+          {
+            class: 'title1',
+            value: 'first h1'
+          },
+          {
+            class: 'title2',
+            value: 'second h1'
+          }
+        ]
       }
-    }
+    ]
   }
-}
+]
 ```
 
 Above, is an example of a simple configuration, ( configurations need to be written in the `JSON` format ).
 
+This `JSON` gets compiled to the `HTML` below:
+
+```
+<root >
+  <div id="root" >
+    <div class="col-md-3" >  </div>
+ 
+    <h1 class="title1" > first h1 </h1>
+
+    <h1 class="title2" > second h1 </h1>
+  </div>
+</root>
+```
+
+
 Once, you've written your own `configuration`, voila needs to parse and compile it into `HTML`, to do that run...
+
 
 ```
 $ voila load

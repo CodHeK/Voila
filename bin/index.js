@@ -30,10 +30,12 @@ const questions3 = [
 const basicConfig = `
 exports.root = [
   {
-    div: {
-      id: 'root',
-      //ADD YOUR ELEMENTS HERE
-    }
+    div: [
+      {
+        id: 'root'
+        //ADD YOUR ELEMENTS HERE
+      }
+    ]
   }
 ]
 `;
