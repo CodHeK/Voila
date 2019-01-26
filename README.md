@@ -1,5 +1,6 @@
 # Voila.js
-VoilaJS is a  SAML ( Syntactically awesome markup language ) which boosts your static front-end development process.
+![voila](https://img.shields.io/badge/npm-v1.2.0-blue.svg) ![build](https://img.shields.io/badge/build-passing-green.svg)
+VoilaJS is a  SAML ( Syntactically awesome markup language ) which boosts your static front-end development process by allowing you to write your HTML in the form of modules, very similar to React but, with a much less steeper learning curve! ( All you need to know is to write `JSON` and that's easy! :stuck_out_tongue:)
 
 The best part is HTML just became programmable :stuck_out_tongue: !! But how ?
 
@@ -7,8 +8,9 @@ What we thought was, CSS has it's programmable counter-part ( SASS ) why not HTM
 
 Just like other front-end frameworks, we too have out our own CLI to bootstrap your starter code.
 
-Installation :
 
+## Installation :
+#
 ```
 $ npm i -g voila-cmd
 ```
@@ -75,7 +77,7 @@ This `JSON` gets compiled to the `HTML` below:
 <root >
   <div id="root" >
     <div class="col-md-3" >  </div>
- 
+
     <h1 class="title1" > first h1 </h1>
 
     <h1 class="title2" > second h1 </h1>
@@ -94,6 +96,20 @@ $ voila load
 We have built our own `parser` that parses the `JSON` configurations and converts them into it's equivalent `HTML` syntax.
 
 This `HTML` is can be viewed by starting the `server`, just run ...
+
+```
+$ voila start
+```
+
+## Examples :
+#
+```
+$ git clone this repository / download zip
+```
+
+```
+$ cd example
+```
 
 ```
 $ voila start
