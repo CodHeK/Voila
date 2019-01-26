@@ -7,6 +7,7 @@ const values = require('../lib/values');
 const fs = require('fs');
 const { exec } = require('child_process');
 const  cdn = require('../lib/res/cdn');
+const { parser } = require('../lib/parser');
 
 const questions = [
     { type: 'input', name: 'title', message: 'Choose project title' },
@@ -78,6 +79,9 @@ function init() {
               .then(async function (answers2) {
                   l2 = answers2;
                   l3 = jsonConcat(l1, l2);
+                  l3 = jsonConcat(l3, {
+                    "config": "config.js"
+                  });
                   console.log(l3);
                   inquirer
                   .prompt(questions3)
@@ -133,7 +137,7 @@ function init() {
                                   console.log('File created successfully');
                               }
                           });
-                          fs.writeFile (`${dir}/voila.conf`, JSON.stringify(l3), function(err) {
+                          fs.writeFile (`${dir}/voila.json`, JSON.stringify(l3), function(err) {
                               if (err) throw err;
                               console.log('complete');
                               }
@@ -153,6 +157,26 @@ function init() {
                                   console.log('Successfully created .gitignore');
                               }
                           });
+
+                          fs.open(`${dir}/config.js`,'w', function(err, file) {
+                              if (err) {
+                                  console.log('Error creating config.js');
+                              } else {
+                                  let root = `
+                                      exports.root = {
+                                        div: {
+                                          id: 'root',
+                                          //ADD YOUR ELEMENTS HERE
+                                        }
+                                      }
+                                  `;
+                                  root = root.trim();
+                                  fs.appendFile(`${dir}/config.js`, `${root}\n`, function (err) {
+                                      if (err) throw err;
+                                  });
+                                  console.log('Successfully created .gitignore');
+                              }
+                          });
                           setHTML(dir);
                       }
                   })
@@ -164,6 +188,9 @@ function init() {
           }
           else {
               l3 = jsonConcat(l1, l2);
+              l3 = jsonConcat(l3, {
+                "config": "config.js"
+              });
               console.log(l3);
               inquirer
               .prompt(questions3)
@@ -224,6 +251,25 @@ function init() {
                           console.log('complete');
                           }
                       );
+                      fs.open(`${dir}/config.js`,'w', function(err, file) {
+                          if (err) {
+                              console.log('Error creating config.js');
+                          } else {
+                              let root = `
+                                  exports.root = {
+                                    div: {
+                                      id: 'root',
+                                      //ADD YOUR ELEMENTS HERE
+                                    }
+                                  }
+                              `;
+                              root = root.trim();
+                              fs.appendFile(`${dir}/config.js`, `${root}\n`, function (err) {
+                                  if (err) throw err;
+                              });
+                              console.log('Successfully created .gitignore');
+                          }
+                      });
                       setHTML(dir);
 
                   }
@@ -248,6 +294,13 @@ program
     .description('Starting Server!')
     .action(function () {
         server();
+    });
+
+program
+    .command('load')
+    .description('Parsing!')
+    .action(function () {
+        parser();
     });
 
 
