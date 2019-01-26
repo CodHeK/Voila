@@ -3,6 +3,7 @@
 const inquirer = require('inquirer');
 const values = require('../lib/values');
 const fs = require('fs');
+const { exec } = require('child_process');
 
 const questions = [
     { type: 'input', name: 'title', message: 'Choose project title' },
@@ -21,29 +22,45 @@ const questions2 = [
 
 inquirer
     .prompt(questions)
-    .then(function (answers) {
+    .then(async function (answers) {
         inquirer
 	    .prompt(questions2)
-	    .then(function (answers2) {
+	    .then(async function (answers2) {
             if (answers2.final === true) {
                 var curr_dir = process.cwd();
-                var dir = curr_dir + '/' + answers.title;
-                console.log(dir);
+                var dir = `${curr_dir}/${answers.title}`;
+                /* Creating a directory */
                 try {
                     fs.mkdirSync(dir);
-                    fs.mkdirSync(dir+'/js');
-                    fs.mkdirSync(dir+'/css');
+                    console.log(`Created folder ${answers.title}. You can do cd ${answers.title} to view the files created.`)
                 } catch (err) {
                     if (err.code !== 'EEXIST') throw err
                 }
-                fs.open(dir+'/'+answers.entry,'w', function(err, file) {
+                /* Initialize a empty git repo */
+                if (answers.git === true) {
+                    await exec(`cd ${dir} && git init`, (err, stdout, stderr) => {
+                        if (err) {
+                          console.log('Could not create a empty git repo.')
+                          return;
+                        }
+                        console.log(stdout);
+                    });
+                }
+                /* Make empty css and js folders */
+                try {
+                    fs.mkdirSync(`${dir}/js`);
+                    fs.mkdirSync(`${dir}/css`);
+                } catch (err) {
+                    if (err.code !== 'EEXIST') throw err
+                }
+                /* Make entry point file */
+                fs.open(`${dir}/answers.entry`,'w', function(err, file) {
                     if (err) {
-                        console.log("Error creating entry point");
+                        console.log('Error creating entry point');
                     } else {
                         console.log('File created successfully');
                     }
                 });
-                
             }
         })
         .catch((error) => {
