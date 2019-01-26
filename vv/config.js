@@ -7,7 +7,11 @@ exports.root = {
     div : {
       h1: {
         class: 'title',
-        value: 'PG<3NS'
+        value: 'Welcome to page'
+      },
+      span: {
+        class: 'col-md-2',
+        value: 'Hi'
       }
     }
   }
