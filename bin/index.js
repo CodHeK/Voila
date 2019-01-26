@@ -27,7 +27,14 @@ const questions3 = [
     { type: 'confirm', name: 'final', message: 'Is this Okay?', default: true },
 ];
 
-let thisDir;
+const basicConfig = `
+exports.root = {
+  div: {
+    id: 'root',
+    //ADD YOUR ELEMENTS HERE
+  }
+}
+`;
 
 function setHTML(dir) {
   let css = (l3.css === 'Bootstrap') ? (cdn.bootstrap['css'][0]) : (cdn.materialize['css'][0]);
@@ -49,7 +56,6 @@ function setHTML(dir) {
         ${js_files}
       </head>
       <body>
-        <h1>hey</h1>
       </body>
     </html>
   `;
@@ -122,14 +128,6 @@ function init() {
                               }
                           });
 
-                          fs.open(`${dir}/${answers.entry}`,'w', function(err, file) {
-                              if (err) {
-                                  console.log('Error creating entry point');
-                              } else {
-                                  console.log('File created successfully');
-                              }
-                          });
-
                           fs.open(`${dir}/voila.json`,'w', function(err, file) {
                               if (err) {
                                   console.log('Error creating entry point');
@@ -137,7 +135,7 @@ function init() {
                                   console.log('File created successfully');
                               }
                           });
-                          fs.writeFile (`${dir}/voila.json`, JSON.stringify(l3), function(err) {
+                          fs.writeFile (`${dir}/voila.json`, JSON.stringify(l3, null, 4), function(err) {
                               if (err) throw err;
                               console.log('complete');
                               }
@@ -162,19 +160,12 @@ function init() {
                               if (err) {
                                   console.log('Error creating config.js');
                               } else {
-                                  let root = `
-                                      exports.root = {
-                                        div: {
-                                          id: 'root',
-                                          //ADD YOUR ELEMENTS HERE
-                                        }
-                                      }
-                                  `;
+                                  let root = basicConfig;
                                   root = root.trim();
                                   fs.appendFile(`${dir}/config.js`, `${root}\n`, function (err) {
                                       if (err) throw err;
                                   });
-                                  console.log('Successfully created .gitignore');
+                                  console.log('Successfully created config.js');
                               }
                           });
                           setHTML(dir);
@@ -246,7 +237,7 @@ function init() {
                               console.log('File created successfully');
                           }
                       });
-                      fs.writeFile (`${dir}/voila.json`, JSON.stringify(l3), function(err) {
+                      fs.writeFile (`${dir}/voila.json`, JSON.stringify(l3, null, 4), function(err) {
                           if (err) throw err;
                           console.log('complete');
                           }
@@ -255,19 +246,12 @@ function init() {
                           if (err) {
                               console.log('Error creating config.js');
                           } else {
-                              let root = `
-                                  exports.root = {
-                                    div: {
-                                      id: 'root',
-                                      //ADD YOUR ELEMENTS HERE
-                                    }
-                                  }
-                              `;
+                              let root = basicConfig;
                               root = root.trim();
                               fs.appendFile(`${dir}/config.js`, `${root}\n`, function (err) {
                                   if (err) throw err;
                               });
-                              console.log('Successfully created .gitignore');
+                              console.log('Successfully created config.js');
                           }
                       });
                       setHTML(dir);
