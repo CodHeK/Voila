@@ -21,7 +21,6 @@
     "find-free-port": "^2.0.0",
     "inquirer": "^6.2.1",
     "lodash": "^4.17.11",
-    "speech-to-text": "^2.9.1",
-    "mkdirp": "^0.5.1"
+    "speech-to-text": "^2.9.1"
   }
 }
