@@ -28,12 +28,14 @@ const questions3 = [
 ];
 
 const basicConfig = `
-exports.root = {
-  div: {
-    id: 'root',
-    //ADD YOUR ELEMENTS HERE
+exports.root = [
+  {
+    div: {
+      id: 'root',
+      //ADD YOUR ELEMENTS HERE
+    }
   }
-}
+]
 `;
 
 function setHTML(dir) {
