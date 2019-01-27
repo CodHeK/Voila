@@ -1,6 +1,6 @@
 ![logo](logo.png)
 
-![voila](https://img.shields.io/badge/npm-v1.2.1-blue.svg) ![build](https://img.shields.io/badge/build-passing-green.svg)
+![voila](https://img.shields.io/badge/npm-v1.2.2-blue.svg) ![build](https://img.shields.io/badge/build-passing-green.svg)
 
 [Link to the presentation](https://drive.google.com/file/d/1XnWTu-PowXnXtUk1_Bp1mdJavCoPA6zg/view?usp=sharing)
 
@@ -50,7 +50,7 @@ exports.root = [
   {
     div: [
       {
-        id: 'root'
+        id: 'root',
         //ADD YOUR ELEMENTS HERE
         div: [
           {

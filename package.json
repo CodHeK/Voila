@@ -1,6 +1,6 @@
 {
   "name": "voila-cmd",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "VoilaJS is a  SAML ( Syntactically awesome markup language ) which boosts your static front-end development process.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
