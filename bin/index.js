@@ -32,7 +32,7 @@ exports.root = [
   {
     div: [
       {
-        id: 'root'
+        id: 'root',
         //ADD YOUR ELEMENTS HERE
       }
     ]
