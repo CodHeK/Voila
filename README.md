@@ -1,4 +1,4 @@
-# Voila.js
+![logo](logo.png)
 ![voila](https://img.shields.io/badge/npm-v1.2.0-blue.svg) ![build](https://img.shields.io/badge/build-passing-green.svg)
 
 VoilaJS is a  SAML ( Syntactically awesome markup language ) which boosts your static front-end development process by allowing you to write your HTML in the form of modules, very similar to React but, with a much less steeper learning curve! ( All you need to know is to write `JSON` and that's easy! :stuck_out_tongue:)
