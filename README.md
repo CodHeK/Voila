@@ -187,7 +187,7 @@ module.exports.navbar = () => {
 
 ## Examples :
 #
-We have added 2 exmaples one for `Bootstrap` and other for `Materialize` :
+We have added 2 examples one for `Bootstrap` and other for `Materialize` :
 ```
 $ git clone this repository / download zip
 ```
